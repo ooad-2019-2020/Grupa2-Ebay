@@ -1,6 +1,7 @@
 # Grupa2-Ebay
 ## Tema: Online prodaja i kupovina
-![online](https://mybroadband.co.za/news/wp-content/uploads/2017/08/Online-shopping-cart.jpg)
+![online](https://begenkishop.com/wp-content/uploads/2019/12/Online-Shopping.jpg)
+(https://mybroadband.co.za/news/wp-content/uploads/2017/08/Online-shopping-cart.jpg)
 (https://images.assetsdelivery.com/compings_v2/nnudoo/nnudoo1710/nnudoo171000007.jpg)
 
 ## Tim
