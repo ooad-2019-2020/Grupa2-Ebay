@@ -1,6 +1,6 @@
 # Grupa2-Ebay
 ## Tema: Online prodaja i kupovina
-![online](https://p7.hiclipart.com/preview/509/849/122/e-commerce-omnichannel-online-shopping-sales-retail-online-shop.jpg)
+![online](https://image.shutterstock.com/image-photo/shopping-cart-laptop-computer-products-260nw-725791648.jpg)
 
 ## Tim
   - Kanita Čakalović
