@@ -1,6 +1,6 @@
 # Grupa2-Ebay
 ## Tema: Online prodaja i kupovina
-![online](https://i7.pngguru.com/preview/930/556/834/shopping-cart-logo-online-shopping-service-shopping-cart.jpg)
+![online](https://banner2.cleanpng.com/20180128/ojw/kisspng-logo-shopping-shopping-logo-design-5a6db6532c7f63.6926652415171395391823.jpg)
 
 ## Tim
   - Kanita Čakalović
