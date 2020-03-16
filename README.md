@@ -1,5 +1,7 @@
 # Grupa2-Ebay
-Tema: Online prodaja i kupovina
+## Tema: Online prodaja i kupovina
+![online](https://i7.pngguru.com/preview/930/556/834/shopping-cart-logo-online-shopping-service-shopping-cart.jpg)
+
 ## Tim
   - Kanita Čakalović
   - Amina Babić
