@@ -20,7 +20,9 @@ U skladu s tim, poslove kupovine i prodaje moguće je znatno unaprijediti uz pom
 - Čuvanje statističkih podataka o kupnji, potražnji, prodaji i sl. za što lakše dodavanje novih funkcionalnosti u kasnijim fazama razvoja programa, koje uključuje održavanje i redovno ažuriranje istog
 
 ## Procesi
-
+- Korisnici koji žele koristiti usluge aplikacije kreiraju račun i unose podake pri čemu se mogu registrovati kao Kupac ili Prodavač
+- Modifikacija profila ( izmjena podataka ), te brisanje profila
+- Praćenje toka naručenog proizvoda
 - Prodavač upravlja prodajom artikala tako što modifikuje proizvode koji su u ponudi na njegovom profilu ili analizira statistiku prodaje
 - Kupac vrši izbor željenog artikla, te formira narudžbu uz izbor načina plaćanja
 - Dostavljač prima identifikacioni broj narudžbe i vrši dostavu narudžbe na adresu
