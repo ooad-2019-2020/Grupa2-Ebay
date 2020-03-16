@@ -1,6 +1,6 @@
 # Grupa2-Ebay
 ## Tema: Online prodaja i kupovina
-![online](https://image.shutterstock.com/image-photo/shopping-cart-laptop-computer-products-260nw-725791648.jpg)
+![online](https://images.assetsdelivery.com/compings_v2/nnudoo/nnudoo1710/nnudoo171000007.jpg)
 
 ## Tim
   - Kanita Čakalović
