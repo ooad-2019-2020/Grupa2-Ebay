@@ -16,38 +16,37 @@ U skladu s tim, poslove kupovine i prodaje moguće je znatno unaprijediti uz pom
 
 ## PROCESI
 
-# Registracija korisnika
+- Registracija korisnika
 Registracija korisnika podrazumijeva da korisnik unese osnovne podatke potrebne za pristup računu što su ime, prezime, mail, registracija, te da naznači da li će račun koristiti kao kupac ili prodavač.  Potrebno je da korisnik odredi username/mail i password koji će unositi prilikom prijavljivanja na svoj račun. Te informacije će se moći ažurirati i mijenjati po volji korisnika, a username služi da ga drugi korisnici mogu bolje naći. Također je bitno naglasiti da unos tih podataka mora biti validan i smislen, kao npr. da password ima minimalan broj karaktera potreban za prijavu, kako bi se omogućila što bolja sigurnost računa.
 
-# Prijava korisnika
+- Prijava korisnika
 Za prijavu je potrebno unijeti username i lozinku.
 
-# Dodavanje novih artikala u ponudu prodavača 
+- Dodavanje novih artikala u ponudu prodavača 
 Prodavaču se nudi mogućnost da dodaje nove artikle na svoj prodajni profil.
 
-# Modifikacija ponuđenih artikala 
+- Modifikacija ponuđenih artikala 
 Prodavač može da uklanja artikle iz svoje ponude, da mijenja cijene ponuđenih artikala, mijenja opise artikala, definira minimalnu dozvoljenu količinu zaliha artikla, te da nudi posebne ponude proizvoda (akcije)
 
-# Pretraživanje artikala
+- Pretraživanje artikala
 Kupac može birati način na koji želi da pretražuje proizvod koji želi pogledati ili kupiti iz katalog ponuđenih artikala. Kupac može da unese ključnu riječ ili naziv artikla u pretraživač ili da artikle pretražuje po kategorijama u ponuđenom izborniku. 
 
-# Kupovina artikala
+- Kupovina artikala
 Nakon odabira željenog artikla, provjerava se da li je narudžba moguća, to jeste, da li u skladištu postoji dovoljna količina datog artikla za realizaciju narudžbe. Ukoliko je realizacija narudžbe moguća i odobrena, slijedi obračun narudžbe. Od kupca će se tražiti da odabere način plaćanja, te unese osnovne podatke potrebne za realizaciju dostave kupljenog artikla. 
 
-
-# Plaćanje narudžbe
+- Plaćanje narudžbe
 Nakon što se kupac odluči za kupovinu artikla, potvrdi kupovinu istog, te se izvrši obračun narudžbe, prikazuje mu se račun koji treba platiti, te načini na koje može izvršiti plaćanje. Plaćanje se može izvršiti kreditnom karticom ili prilikom preuzimanja narudžbe (prilikom dostave). Ukoliko se kupac odluči za plaćanje kreditnom karticom, od njega će se tražiti da izvrši unos podataka potrebnih da se izvrši naplata. Ukoliko uneseni podaci budu validni, podaci se šalju sistemu za autorizaciju kartica koji treba da potvrdi ili odbije transakciju. Ukoliko se kupac odluči za drugi način plaćanja, prilikom preuzimanja narudžbe, bit će potrebno provjeriti pouzdanost kupca koji vrši narudžbu (kupac ne smije da se nalazi na crnoj listi kupaca, te ocjena njegovog profila mora da bude zadovoljavajuća). Ukoliko plaćanje bude uspješno i odobreno za jedan od navedenih načina, narudžbi se dodjeljuje jedinstven identifikacioni broj (ili kod), te se prelazi na proces dostave narudžbe.
 
-# Praćenje naručenog artikla
+- Praćenje naručenog artikla
 Prilikom odobrenja kupovine, potrebno je da se svakoj narudžbi dodijeli jedinstven identifikacioni broj (ili kod), tako da kupac ima mogućnost da prati stanje svake svoje narudžbe i tok same kupovine (od naručivanja putem aplikacije  do isporuke kupcu).
 
-# Pružanje informacija i pomoći klijentima
+- Pružanje informacija i pomoći klijentima
 Korisnik aplikacije treba da ima pristup informacijama o pojedinostima vezanim za korištenje aplikacije, eventualnim nepredviđenim okolnostima prilikom korištenja (neuspješna isporuka, problemi sa naplatom, problemi sa korisničkim računom) i mogućnosti rješavanja istih, mogućnostima promjene korisničke šifre, mogućnostima izmjena korisničnog profila, te informacijama vezanim za prava korisnika. 
 
-# Upravljanje korisničkim računom (Modifikacija računa)
+- Upravljanje korisničkim računom (Modifikacija računa)
 Korisnik treba da ima mogućnost za izmjene već kreiranog korisničkog računa. Nudi mu se mogućnost promjene korisničke šifre, promjene korisničkog imena, te udređivanja opisa korisničkog profila. 
 
-# Upravljanje prodajom
+- Upravljanje prodajom
 Prodavaču se nudi mogućnost da dodaje nove artikle na svoj prodajni profil, da uklanja artikle, da mijenja cijene ponuđenih artikala, mijenja opise artikala, definira minimalnu dozvoljenu količinu zaliha artikla, te da nudi posebne ponude proizvoda (akcije). 
 Ukoliko neki artikal iz ponude prodavača bude naručen od strane nekog kupca, prodavač ima priliku da prati tok prodaje, to jeste da ima uvid u status narudžbe artikla sa svog profila. 
 Ukoliko količina nekog artikla sa profila prodavača padne ispod definirane minimalne dozvoljene količine, prodavaču se šalje upozorenje o tome, te se artikal automatski briše iz skladišta artikala i više ne postoji u ponudi artikala za kupce.
