@@ -29,7 +29,7 @@ namespace eBay.Models
         
         public Kategorija Kategorija { get; set; }
 
-        public int ProdavacId { get; set; }
+        public string ProdavacId { get; set; }
 
         public Prodavac Prodavac { get; set; }
 

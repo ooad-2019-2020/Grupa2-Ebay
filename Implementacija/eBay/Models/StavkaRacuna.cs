@@ -21,12 +21,14 @@ namespace eBay.Models
 
         public String Kategorija { get; set; }
 
-        public int ProdavacId { get; set; }
+        public string ProdavacId { get; set; }
 
         public Prodavac Prodavac { get; set; }
 
         [Required]
         public uint Kolicina { get; set; }
         public int ProizvodId { get; set; }
+        public int RacunId { get; set; }
+        public Racun Racun { get; set; }
     }
 }

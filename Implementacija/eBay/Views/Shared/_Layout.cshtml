@@ -29,6 +29,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Proizvod" asp-action="Index">Proizvodi</a>
                         </li>
+                        @if (User.IsInRole("Kupac"))
+                        {
+                            <text>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Korpa" asp-action="Index">
+                                        <img height="24" width="24" src="~/img/cart.svg" />
+                                    </a>
+                                </li>
+                            </text>
+                        }
                     </ul>
                 </div>
             </div>

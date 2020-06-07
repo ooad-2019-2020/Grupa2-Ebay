@@ -1,0 +1,44 @@
+﻿@model eBay.Models.Korpa
+
+@{
+    ViewData["Title"] = "Korpa";
+}
+
+<h1>Korpa</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Cijena
+            </th>
+            <th>
+                Kolicina
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Proizvodi) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolicina)
+            </td>
+            <td>
+                GUMB
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -18,13 +18,13 @@ namespace eBay.Data
         {
         }
 
-        //public DbSet<eBayUser> eBayUsers { get; set; }
         public DbSet<Kupac> Kupci { get; set; }
         public DbSet<Prodavac> Prodavaci { get; set; }
         public DbSet<Proizvod> Proizvodi { get; set; }
         public DbSet<Kategorija> Kategorije { get; set; }
-
-
+        public DbSet<Korpa> Korpe { get; set; }
+        public DbSet<Racun> Racuni { get; set; }
+        public DbSet<StavkaRacuna> StavkeRacuna { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -34,6 +34,11 @@ namespace eBay.Data
             // Add your customizations after calling base.OnModelCreating(builder);
             builder.Entity<Proizvod>().ToTable("Proizvod");
             builder.Entity<Kategorija>().ToTable("Kategorija");
+            builder.Entity<Korpa>().ToTable("Korpa");
+            builder.Entity<Racun>().ToTable("Racun");
+            builder.Entity<StavkaRacuna>().ToTable("StavkaRacuna");
+
+
         }
     }
 }

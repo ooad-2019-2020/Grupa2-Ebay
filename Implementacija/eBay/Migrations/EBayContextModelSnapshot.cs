@@ -253,6 +253,23 @@ namespace eBay.Migrations
                     b.ToTable("Kategorija");
                 });
 
+            modelBuilder.Entity("eBay.Models.Korpa", b =>
+                {
+                    b.Property<int>("KorpaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("KupacId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("KorpaId");
+
+                    b.HasIndex("KupacId");
+
+                    b.ToTable("Korpa");
+                });
+
             modelBuilder.Entity("eBay.Models.Proizvod", b =>
                 {
                     b.Property<int>("ProizvodId")
@@ -269,6 +286,9 @@ namespace eBay.Migrations
                     b.Property<long>("Kolicina")
                         .HasColumnType("bigint");
 
+                    b.Property<int?>("KorpaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -277,10 +297,7 @@ namespace eBay.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProdavacId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProdavacId1")
+                    b.Property<string>("ProdavacId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("URLSlike")
@@ -291,9 +308,71 @@ namespace eBay.Migrations
 
                     b.HasIndex("KategorijaId");
 
-                    b.HasIndex("ProdavacId1");
+                    b.HasIndex("KorpaId");
+
+                    b.HasIndex("ProdavacId");
 
                     b.ToTable("Proizvod");
+                });
+
+            modelBuilder.Entity("eBay.Models.Racun", b =>
+                {
+                    b.Property<int>("RacunId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumNarucivanja")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("KupacId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RacunId");
+
+                    b.HasIndex("KupacId");
+
+                    b.ToTable("Racun");
+                });
+
+            modelBuilder.Entity("eBay.Models.StavkaRacuna", b =>
+                {
+                    b.Property<int>("StavkaRacunaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Cijena")
+                        .HasColumnType("decimal(5, 2)");
+
+                    b.Property<string>("Kategorija")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Kolicina")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Naziv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpisProizvoda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProdavacId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProizvodId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RacunId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StavkaRacunaId");
+
+                    b.HasIndex("ProdavacId");
+
+                    b.HasIndex("RacunId");
+
+                    b.ToTable("StavkaRacuna");
                 });
 
             modelBuilder.Entity("eBay.Models.Korisnici.Kupac", b =>
@@ -364,6 +443,13 @@ namespace eBay.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("eBay.Models.Korpa", b =>
+                {
+                    b.HasOne("eBay.Models.Korisnici.Kupac", "Kupac")
+                        .WithMany()
+                        .HasForeignKey("KupacId");
+                });
+
             modelBuilder.Entity("eBay.Models.Proizvod", b =>
                 {
                     b.HasOne("eBay.Models.Kategorija", "Kategorija")
@@ -372,9 +458,33 @@ namespace eBay.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eBay.Models.Korpa", null)
+                        .WithMany("Proizvodi")
+                        .HasForeignKey("KorpaId");
+
                     b.HasOne("eBay.Models.Korisnici.Prodavac", "Prodavac")
                         .WithMany()
-                        .HasForeignKey("ProdavacId1");
+                        .HasForeignKey("ProdavacId");
+                });
+
+            modelBuilder.Entity("eBay.Models.Racun", b =>
+                {
+                    b.HasOne("eBay.Models.Korisnici.Kupac", "Kupac")
+                        .WithMany()
+                        .HasForeignKey("KupacId");
+                });
+
+            modelBuilder.Entity("eBay.Models.StavkaRacuna", b =>
+                {
+                    b.HasOne("eBay.Models.Korisnici.Prodavac", "Prodavac")
+                        .WithMany()
+                        .HasForeignKey("ProdavacId");
+
+                    b.HasOne("eBay.Models.Racun", "Racun")
+                        .WithMany()
+                        .HasForeignKey("RacunId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

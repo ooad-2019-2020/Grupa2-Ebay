@@ -7,6 +7,7 @@ using eBay.Models;
 using Microsoft.AspNetCore.Authorization;
 using eBay.Data;
 using eBay.Models.Korisnici;
+using System.Collections.Generic;
 
 namespace eBay.Controllers
 {
@@ -20,9 +21,30 @@ namespace eBay.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart([FromBody] CartItemRequest request) 
+        public async Task<IActionResult> AddToCart([FromBody] CartItemRequest request) 
         {
-            System.Console.WriteLine(request.Kolicina + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            if (User.IsInRole("Kupac"))
+            {
+                Kupac kupac = _context.Kupci.Where(k => k.UserName == User.Identity.Name).FirstOrDefault();
+                var lista = _context.Korpe.Where(k => k.KupacId == kupac.Id).Include(k=>k.Proizvodi).ToList();
+                Korpa korpa = null;
+                if (lista.Count == 0)
+                {
+                    korpa = new Korpa { KupacId = kupac.Id, Proizvodi = new List<Proizvod>(), Kupac = kupac };
+                    korpa = _context.Add(korpa).Entity;
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    korpa = lista[0];
+                }
+                // Dodavanje proizvoda u korpu
+                Proizvod proizvod = _context.Proizvodi.Where(p => p.ProizvodId == request.ProizvodId).First();
+
+                korpa.Proizvodi.Add(proizvod);
+                _context.Update(korpa);
+                await _context.SaveChangesAsync();
+            }
             Response.Headers.Add("Content-Type", "application/json");
             return Json(request);
         }
