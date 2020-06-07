@@ -1,0 +1,103 @@
+﻿@model IEnumerable<eBay.Models.Proizvod>
+
+@{
+    ViewData["Title"] = "Proizvodi";
+}
+
+<h1>Proizvodi</h1>
+
+@if (User.IsInRole("Prodavac"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.URLSlike)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpisProizvoda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cijena)
+            </th>
+            @if (User.IsInRole("Kupac"))
+            {
+                <th>Kupi</th>
+            }
+            <th>Opcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 50px; height: auto">
+                    <img style="width: 100%; height: auto" src="@Html.DisplayFor(modelItem  => item.URLSlike)" alt="slika" />
+                </td>
+                <td style="vertical-align: middle;">
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td style="vertical-align:middle">
+                    @Html.DisplayFor(modelItem => item.OpisProizvoda)
+                </td>
+                <td style="vertical-align:middle">
+                    @Html.DisplayFor(modelItem => item.Cijena)
+                </td>
+                @if (User.IsInRole("Kupac"))
+                {
+                    <text>
+                        <td>
+                            <form>
+                                <input type="hidden" value="@item.ProizvodId" />
+                                <input id="@item.ProizvodId" type="number" min="1" max="30" step="1" value="1" />
+                                <input type="button" onclick="doAJAXRequest(@item.ProizvodId)" value="Send request"/>
+                            </form>
+                        </td>
+
+                    </text>
+                }
+                <td style="vertical-align:middle">
+
+                    <a asp-action="Details" asp-route-id="@item.ProizvodId">Details</a>
+                    @if (User.IsInRole("Prodavac"))
+                    {
+                        <text>
+                            |
+                            <a asp-action="Edit" asp-route-id="@item.ProizvodId">Edit</a>
+                            |
+                            <a asp-action="Delete" asp-route-id="@item.ProizvodId"> Delete </a>
+                        </text>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    function doAJAXRequest(proizvodId) {
+        const kolicina = document.getElementById(proizvodId).value;
+        const data = {
+            ProizvodId: proizvodId,
+            Kolicina: Number(kolicina)
+        };
+        console.log(data);
+        fetch("@Url.Action("AddToCart")",{
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type":"application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+    }
+</script>
