@@ -30,7 +30,7 @@ namespace eBay.Controllers
                 Korpa korpa = null;
                 if (lista.Count == 0)
                 {
-                    korpa = new Korpa { KupacId = kupac.Id, Proizvodi = new List<Proizvod>(), Kupac = kupac };
+                    korpa = new Korpa { KupacId = kupac.Id, Proizvodi = new List<StavkaKorpe>(), Kupac = kupac };
                     korpa = _context.Add(korpa).Entity;
                     await _context.SaveChangesAsync();
                 }
@@ -40,8 +40,10 @@ namespace eBay.Controllers
                 }
                 // Dodavanje proizvoda u korpu
                 Proizvod proizvod = _context.Proizvodi.Where(p => p.ProizvodId == request.ProizvodId).First();
-
-                korpa.Proizvodi.Add(proizvod);
+                StavkaKorpe stavka = new StavkaKorpe { Kolicina = request.Kolicina,Proizvod=proizvod, ProizvodId=proizvod.ProizvodId};
+                stavka = _context.Add(stavka).Entity;
+                await _context.SaveChangesAsync();
+                korpa.Proizvodi.Add(stavka);
                 _context.Update(korpa);
                 await _context.SaveChangesAsync();
             }

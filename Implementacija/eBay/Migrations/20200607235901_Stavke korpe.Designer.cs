@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eBay.Data;
 
 namespace eBay.Migrations
 {
     [DbContext(typeof(eBayContext))]
-    partial class eBayContextModelSnapshot : ModelSnapshot
+    [Migration("20200607235901_Stavke korpe")]
+    partial class Stavkekorpe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

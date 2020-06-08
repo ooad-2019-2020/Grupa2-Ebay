@@ -8,6 +8,6 @@ namespace eBay.Models
     public class CartItemRequest
     {
         public int ProizvodId { get; set; }
-        public int Kolicina { get; set; }
+        public uint Kolicina { get; set; }
     }
 }

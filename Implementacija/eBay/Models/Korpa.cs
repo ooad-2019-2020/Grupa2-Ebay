@@ -13,6 +13,6 @@ namespace eBay.Models
         public int KorpaId { get; set; }
         public string KupacId { get; set; }
         public Kupac Kupac{ get; set; }
-        public ICollection<Proizvod> Proizvodi { get; set; }
+        public ICollection<StavkaKorpe> Proizvodi { get; set; }
     }
 }

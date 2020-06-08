@@ -26,11 +26,11 @@ namespace eBay.Controllers
             if (User.IsInRole("Kupac"))
             {
                 Kupac kupac = _context.Kupci.Where(k => k.UserName == User.Identity.Name).FirstOrDefault();
-                var lista = _context.Korpe.Where(k => k.KupacId == kupac.Id).Include(korpa=>korpa.Proizvodi).ToList();
+                var lista = _context.Korpe.Where(k => k.KupacId == kupac.Id).Include(korpa=>korpa.Proizvodi).ThenInclude(p=>p.Proizvod).ToList();
                 Korpa korpa = null;
                 if (lista.Count == 0)
                 {
-                    korpa = new Korpa { KupacId = kupac.Id, Proizvodi = new Proizvod[]{ }, Kupac = kupac };
+                    korpa = new Korpa { KupacId = kupac.Id, Proizvodi = new StavkaKorpe[]{ }, Kupac = kupac };
                     korpa = _context.Korpe.Add(korpa).Entity;
                 } else
                 {
