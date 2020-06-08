@@ -25,6 +25,8 @@ namespace eBay.Data
         public DbSet<Korpa> Korpe { get; set; }
         public DbSet<Racun> Racuni { get; set; }
         public DbSet<StavkaRacuna> StavkeRacuna { get; set; }
+        public DbSet<StavkaKorpe> StavkeKorpe { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

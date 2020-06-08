@@ -36,9 +36,30 @@
                 @Html.DisplayFor(modelItem => item.Kolicina)
             </td>
             <td>
-                GUMB
+                <input type="button" onclick="doAJAXRequest(@item.StavkaKorpeId)" value="x"/>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<script type="text/javascript">
+    function doAJAXRequest(stavkaId) {
+        const data = {
+            StavkaKorpeId: stavkaId
+        };
+        console.log(data);
+        fetch("@Url.Action("RemoveFromCart")",{
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type":"application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                location.reload();
+            })
+            .catch(err => console.log(err));
+    }
+</script>

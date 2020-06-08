@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using eBay.Data;
 using eBay.Models;
 using eBay.Models.Korisnici;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace eBay.Controllers
 {
@@ -40,6 +41,15 @@ namespace eBay.Controllers
                 return View(korpa);
             }
             return RedirectToRoute("/login");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromCart([FromBody] StavkaRequest request)
+        {
+            StavkaKorpe stavka = _context.StavkeKorpe.Where(stavka => stavka.StavkaKorpeId == request.StavkaKorpeId).First();
+            _context.StavkeKorpe.Remove(stavka);
+            await _context.SaveChangesAsync();
+            return Json(new object{});
         }
 
     }
